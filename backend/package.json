@@ -33,12 +33,6 @@
     "docker:prod:down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
     "prepare": "husky install"
   },
-  "lint-staged": {
-    "src/**/*.{ts,js}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
   "keywords": [
     "expressjs",
     "node",
