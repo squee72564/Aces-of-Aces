@@ -19,6 +19,6 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    ignores: ["node_modules", "dist", "build", "coverage", "./src/components/ui/**"],
+    ignores: ["node_modules", "dist", "build", "coverage", "./src/components/ui/*/**/"],
   },
 ]);

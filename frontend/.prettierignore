@@ -17,4 +17,4 @@ coverage/
 /build/coverage
 
 # Shadcnui files
-/src/components/ui/
+/src/components/ui/*/**/
