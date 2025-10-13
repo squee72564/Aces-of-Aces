@@ -9,12 +9,12 @@
   },
   "lint-staged": {
     "frontend/src/**/*.{ts,js,tsx,jsx}": [
-      "pnpm --filter ./frontend lint",
-      "pnpm --filter ./frontend pretty"
+      "pnpm --filter ./frontend eslint --fix",
+      "pnpm --filter ./frontend prettier --write"
     ],
     "backend/src/**/*.{ts,js}": [
-      "pnpm --filter ./backend lint",
-      "pnpm --filter ./backend pretty"
+      "pnpm --filter ./backend eslint --fix",
+      "pnpm --filter ./backend prettier --write"
     ]
   },
   "keywords": [],
