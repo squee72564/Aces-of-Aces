@@ -107,11 +107,11 @@ export default function SignIn() {
                     callbackURL: "/dashboard",
                   },
                   {
-                    onRequest: (ctx) => {
+                    onRequest: (_ctx) => {
                       setLoading(true);
                     },
-                    onResponse: (ctx) => {
-                      console.log("ctx:", ctx);
+                    onResponse: (_ctx) => {
+                      console.log("ctx:", _ctx);
                       setLoading(false);
                     },
                   }
