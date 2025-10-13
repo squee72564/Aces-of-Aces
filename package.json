@@ -1,0 +1,30 @@
+{
+  "name": "ace_of_aces",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "frontend/src/**/*.{ts,js,tsx,jsx}": [
+      "pnpm --filter ./frontend lint",
+      "pnpm --filter ./frontend format"
+    ],
+    "backend/src/**/*.{ts,js}": [
+      "pnpm --filter ./backend lint",
+      "pnpm --filter ./backend format"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.1",
+  "devDependencies": {
+    "eslint": "^9.37.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^16.2.4",
+    "prettier": "^3.6.2"
+  }
+}
