@@ -1,30 +1,29 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import SignIn from "./components/signIn";
+import SignUp from "./components/signUp";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <div className="flex flex-col items-center justify-center min-w-full">
+      <h1>Aces of Aces</h1>
+      <Tabs defaultValue="signin" className="w-full max-w-md p-4 bg-transparent">
+        <TabsList className="flex flex-row w-full gap-5 bg-transparent">
+          <TabsTrigger value="signin" className="text-white">
+            SignIn
+          </TabsTrigger>
+          <TabsTrigger value="signup" className="text-white">
+            SignUp
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="signin">
+          <SignIn />
+        </TabsContent>
+        <TabsContent value="signup">
+          <SignUp />
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 }
 
