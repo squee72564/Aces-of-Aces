@@ -10,11 +10,11 @@
   "lint-staged": {
     "frontend/src/**/*.{ts,js,tsx,jsx}": [
       "pnpm --filter ./frontend lint",
-      "pnpm --filter ./frontend format"
+      "pnpm --filter ./frontend pretty"
     ],
     "backend/src/**/*.{ts,js}": [
       "pnpm --filter ./backend lint",
-      "pnpm --filter ./backend format"
+      "pnpm --filter ./backend pretty"
     ]
   },
   "keywords": [],
