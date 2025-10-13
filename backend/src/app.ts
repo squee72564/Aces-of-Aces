@@ -32,7 +32,7 @@ app.use(helmet());
 // Enable cors
 app.use(
   cors({
-    origin: "*any",
+    origin: env.CORS_ORIGIN,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
