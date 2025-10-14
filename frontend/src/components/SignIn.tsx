@@ -76,20 +76,17 @@ export default function SignIn() {
                       setLoading(true);
                     },
                     onResponse: (ctx) => {
-                      console.log("ctx:", ctx);
-                      if (ctx.response.status !== 200) {
-                        toast.error(ctx.response.statusText);
-                      } else {
-                        // Redirect or update UI on successful sign-in
-                        navigate("/dashboard");
-                        toast.success(ctx.response.statusText);
-                      }
                       setLoading(false);
+                      if (!ctx.response.ok) {
+                        toast.error(ctx.response.statusText);
+                      }
                     },
                   }
                 );
               } catch (error) {
-                console.error("Error during sign-in:", error);
+                setLoading(false);
+                toast.error("An unexpected error occurred");
+                console.error(error);
               }
             }}
           >
@@ -98,25 +95,31 @@ export default function SignIn() {
 
           <div className={cn("w-full gap-2 flex items-center", "justify-between flex-col")}>
             <Button
-              className={cn("w-full")}
-              variant={"secondary"}
+              className="w-full"
+              variant="secondary"
               disabled={loading}
               onClick={async () => {
-                await signIn.social(
-                  {
-                    provider: "github",
-                    callbackURL: "/dashboard",
-                  },
-                  {
-                    onRequest: (_ctx) => {
-                      setLoading(true);
+                setLoading(true);
+                try {
+                  await signIn.social(
+                    {
+                      provider: "github",
                     },
-                    onResponse: (_ctx) => {
-                      console.log("ctx:", _ctx);
-                      setLoading(false);
-                    },
-                  }
-                );
+                    {
+                      onRequest: () => setLoading(true),
+                      onResponse: (ctx) => {
+                        setLoading(false);
+                        if (!ctx.response.ok) {
+                          toast.error(ctx.response.statusText || "GitHub login failed");
+                        }
+                      },
+                    }
+                  );
+                } catch (err) {
+                  setLoading(false);
+                  toast.error("An unexpected error occurred");
+                  console.error(err);
+                }
               }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">

@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { Loader2, X } from "lucide-react";
 import { signUp } from "@/lib/auth-client";
 import { toast } from "sonner";
@@ -26,6 +27,7 @@ export default function SignUp() {
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -140,7 +142,7 @@ export default function SignUp() {
           </div>
           <Button
             type="submit"
-            className={cn("w-full text-primary-background")}
+            className={cn("w-full")}
             disabled={loading}
             onClick={async () => {
               await signUp.email({
@@ -160,7 +162,7 @@ export default function SignUp() {
                     toast.error(ctx.error.message);
                   },
                   onSuccess: async () => {
-                    //router.push("/dashboard");
+                    navigate("/");
                   },
                 },
               });

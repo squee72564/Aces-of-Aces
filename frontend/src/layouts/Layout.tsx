@@ -7,8 +7,12 @@ export default function Layout() {
       <header className="flex justify-between mx-10">
         <h1 className="text-bold font-xl">Ace of Aces</h1>
         <nav className="flex justify-center items-center gap-10">
-          <Link to="/"><Button variant={"outline"}>Home</Button></Link>
-          <Link to="/about"><Button variant={"outline"}>About</Button></Link>
+          <Link to="/">
+            <Button variant={"secondary"}>Home</Button>
+          </Link>
+          <Link to="/about">
+            <Button variant={"secondary"}>About</Button>
+          </Link>
         </nav>
       </header>
       <main>

@@ -1,21 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Layout, DashboardLayout } from "./layouts";
+import { DashboardLayout } from "./layouts";
 import { Home, Dashboard } from "@/pages";
-import { AuthRoute } from "./Auth";
-
+import { AuthProvider } from "./components/AuthProvider";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/">
           <Route index element={<Home />} />
-          <Route path="dashboard" element={
-            <AuthRoute>
-              <DashboardLayout/>
-            </AuthRoute>
-          }>
-            <Route index element={<Dashboard />}/>
+          <Route
+            path="dashboard"
+            element={
+              <AuthProvider>
+                <DashboardLayout />
+              </AuthProvider>
+            }
+          >
+            <Route index element={<Dashboard />} />
           </Route>
         </Route>
       </Routes>

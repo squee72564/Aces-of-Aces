@@ -8,7 +8,7 @@ const root = document.getElementById("root");
 
 ReactDOM.createRoot(root!).render(
   <StrictMode>
-    <App/>
-    <Toaster/>
+    <App />
+    <Toaster />
   </StrictMode>
 );
