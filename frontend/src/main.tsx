@@ -1,12 +1,14 @@
+import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { Toaster } from "@/components/ui/sonner";
+import App from "@/App";
 import "./index.css";
-import App from "./App.tsx";
-import { Toaster } from "./components/ui/sonner.tsx";
 
-createRoot(document.getElementById("root")!).render(
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root!).render(
   <StrictMode>
-    <App />
-    <Toaster />
+    <App/>
+    <Toaster/>
   </StrictMode>
 );

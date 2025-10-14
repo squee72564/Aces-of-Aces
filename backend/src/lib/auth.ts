@@ -6,8 +6,6 @@ import env from "../config/index.js";
 import logger from "../config/logger.js";
 import { ac, admin, superAdmin, user } from "./permissions.js";
 
-const database = prismaAdapter(prisma, { provider: "postgresql" });
-
 // Example to optionally include provider like github / google
 const socialProviders: BetterAuthOptions["socialProviders"] = {};
 if (env.GITHUB_CLIENT_ID && env.GITHUB_CLIENT_SECRET) {
@@ -19,7 +17,7 @@ if (env.GITHUB_CLIENT_ID && env.GITHUB_CLIENT_SECRET) {
 }
 
 const auth = betterAuth({
-  database: database,
+  database: prismaAdapter(prisma, { provider: "postgresql" }),
   // Other sign-in methods: https://www.better-auth.com/docs/authentication/email-password
   // https://www.better-auth.com/docs/reference/options#emailandpassword
   emailAndPassword: {
@@ -59,7 +57,7 @@ const auth = betterAuth({
       }
     },
     sendOnSignUp: env.NODE_ENV === "production",
-    autoSignInAfterVerification: true,
+    autoSignInAfterVerification: false,
     expiresIn: 3600, // 1 hour
   },
 

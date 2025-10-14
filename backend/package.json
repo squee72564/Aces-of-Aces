@@ -30,8 +30,7 @@
     "docker:dev:down": "docker compose down",
     "docker:prod": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
     "docker:prod:logs": "docker compose -f docker-compose.yml -f docker-compose.prod.yml logs -f postgres",
-    "docker:prod:down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
-    "prepare": "husky install"
+    "docker:prod:down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down"
   },
   "keywords": [
     "expressjs",
@@ -76,7 +75,6 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "globals": "^16.4.0",
-    "husky": "^8.0.0",
     "lint-staged": "^16.2.3",
     "nodemon": "^3.1.10",
     "prettier": "3.6.2",
