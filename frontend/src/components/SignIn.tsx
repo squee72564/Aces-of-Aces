@@ -9,11 +9,13 @@ import { Loader2 } from "lucide-react";
 import { signIn } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <Card className="max-w-lg">
@@ -59,6 +61,7 @@ export default function SignIn() {
           <Button
             type="submit"
             className={cn("w-full")}
+            variant={"secondary"}
             disabled={loading}
             onClick={async () => {
               try {
@@ -75,12 +78,10 @@ export default function SignIn() {
                     onResponse: (ctx) => {
                       console.log("ctx:", ctx);
                       if (ctx.response.status !== 200) {
-                        // Handle error (e.g., show a notification)
-                        //console.error("Sign-in error:", ctx.error);
                         toast.error(ctx.response.statusText);
                       } else {
                         // Redirect or update UI on successful sign-in
-                        //console.log("Sign-in successful:", ctx);
+                        navigate("/dashboard");
                         toast.success(ctx.response.statusText);
                       }
                       setLoading(false);
@@ -97,8 +98,8 @@ export default function SignIn() {
 
           <div className={cn("w-full gap-2 flex items-center", "justify-between flex-col")}>
             <Button
-              variant="outline"
-              className={cn("w-full gap-2 text-white hover:text-white")}
+              className={cn("w-full")}
+              variant={"secondary"}
               disabled={loading}
               onClick={async () => {
                 await signIn.social(
