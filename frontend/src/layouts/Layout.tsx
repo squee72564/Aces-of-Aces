@@ -3,9 +3,9 @@ import { Button } from "../components/ui/button";
 
 export default function Layout() {
   return (
-    <div className="min-w-full min-h-screen bg-secondary font-sans">
+    <div className="min-w-full min-h-screen font-sans">
       <header className="flex justify-between mx-10">
-        <h1 className="text-bold font-xl text-foreground">Ace of Aces</h1>
+        <h1 className="text-bold font-xl">Ace of Aces</h1>
         <nav className="flex justify-center items-center gap-10">
           <Link to="/"><Button variant={"outline"}>Home</Button></Link>
           <Link to="/about"><Button variant={"outline"}>About</Button></Link>
