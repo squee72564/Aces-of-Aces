@@ -16,7 +16,7 @@ import { useAuth } from "@/components/AuthProvider";
 function AppSidebar() {
   const { data } = useAuth();
   return (
-    <Sidebar collapsible={"offcanvas"} variant={"inset"} side={"right"}>
+    <Sidebar collapsible={"offcanvas"} variant={"sidebar"} side={"right"}>
       <SidebarHeader>Welcome {`${data?.user.name}`}</SidebarHeader>
       <SidebarContent>
         <SidebarGroup />
@@ -32,13 +32,13 @@ function DashboardLayout() {
     <SidebarProvider defaultChecked={false} defaultOpen={false}>
       <div className="min-w-full min-h-screen font-sans flex flex-row">
         <div className="w-full">
-          <header className="flex justify-between mx-10">
-            <h1 className="text-bold font-xl">Ace of Aces </h1>
+          <header className="flex flex-col lg:flex-row justify-between mx-10 mt-5 gap-5">
+            <h1 className="text-bold font-xl mx-auto">Ace of Aces </h1>
             <nav className="flex justify-center items-center gap-10">
               <Link to="/dashboard">
                 <Button variant={"secondary"}>Profile</Button>
               </Link>
-              <Link to="/dashboard">
+              <Link to="/about">
                 <Button variant={"secondary"}>About</Button>
               </Link>
               <Button
